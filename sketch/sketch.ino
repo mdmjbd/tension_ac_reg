@@ -3,7 +3,7 @@
 #define VOLTAGE_SENSOR_PIN A0
 
 ZMPT101B voltageSensor(VOLTAGE_SENSOR_PIN);
-// PATATE
+// PATATE douce
 
 void setup() {
   Serial.begin(9600);
