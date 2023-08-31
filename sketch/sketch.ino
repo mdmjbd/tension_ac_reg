@@ -1,28 +1,22 @@
-#include <ZMPT101B.h>
+#include <zmpt101b.h>
 
-#define VOLTAGE_SENSOR_PIN A0
-
-ZMPT101B voltageSensor(VOLTAGE_SENSOR_PIN);
-// PATATE douce
+ZMPT101B voltageSensor(A0);
 
 void setup() {
   Serial.begin(9600);
-  // put your setup code here, to run once:
-
 }
 
-void loop() {
-  // Set zero point while sensor is live
-  voltageSensor.calibrateLive();
-
+void loop() {  
   // To measure the voltage we need to know the frequency
   // By default 50Hz is used, but you can specify the desired frequency
   // as the first argument for "getVoltageAC()"
-  float V = voltageSensor.getVoltageAC();
+  auto V = voltageSensor.getMaxRMSVoltage();
+  // auto V = getInstantVoltage(A0);
+  // float V = voltageSensor.getVoltageAC(60);
 
-  Serial.println(String(V) + " V");
+  Serial.println(String(V));
 
-  delay(1000);
+  delay(100);
 
 }
 
